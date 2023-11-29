@@ -1,25 +1,84 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+
+import makeData from "./makeData";
+import { Table } from "./Table";
+
+const Styles = styled.div`
+  padding: 1rem;
+
+  table {
+    border-spacing: 0;
+    border: 1px solid black;
+
+    tr {
+      :last-child {
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    th,
+    td {
+      margin: 0;
+      padding: 0.5rem;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+
+      :last-child {
+        border-right: 0;
+      }
+    }
+  }
+`;
 
 function App() {
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Name",
+        columns: [
+          {
+            Header: "First Name",
+            accessor: "firstName",
+          },
+          {
+            Header: "Last Name",
+            accessor: "lastName",
+          },
+        ],
+      },
+      {
+        Header: "Info",
+        columns: [
+          {
+            Header: "Age",
+            accessor: "age",
+          },
+          {
+            Header: "Visits",
+            accessor: "visits",
+          },
+          {
+            Header: "Status",
+            accessor: "status",
+          },
+          {
+            Header: "Profile Progress",
+            accessor: "progress",
+          },
+        ],
+      },
+    ],
+    [],
+  );
+
+  const [data, setData] = React.useState(makeData(20));
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Styles>
+      <Table columns={columns} data={data} setData={setData} />
+    </Styles>
   );
 }
 
