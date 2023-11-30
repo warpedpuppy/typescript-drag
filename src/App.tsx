@@ -1,84 +1,25 @@
-import React from "react";
-import styled from "styled-components";
-
-import makeData from "./makeData";
-import { Table } from "./Table";
-
-const Styles = styled.div`
-  padding: 1rem;
-
-  table {
-    border-spacing: 0;
-    border: 1px solid black;
-
-    tr {
-      :last-child {
-        td {
-          border-bottom: 0;
-        }
-      }
-    }
-
-    th,
-    td {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
-
-      :last-child {
-        border-right: 0;
-      }
-    }
-  }
-`;
+import React, { useState } from "react";
+import Example1 from "./example1/Example1";
+import Example2 from "./example2/Example2";
+import Example3 from "./example3/Example3";
+import Example4 from "./example4/Example4";
+import './App.css';
 
 function App() {
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Name",
-        columns: [
-          {
-            Header: "First Name",
-            accessor: "firstName",
-          },
-          {
-            Header: "Last Name",
-            accessor: "lastName",
-          },
-        ],
-      },
-      {
-        Header: "Info",
-        columns: [
-          {
-            Header: "Age",
-            accessor: "age",
-          },
-          {
-            Header: "Visits",
-            accessor: "visits",
-          },
-          {
-            Header: "Status",
-            accessor: "status",
-          },
-          {
-            Header: "Profile Progress",
-            accessor: "progress",
-          },
-        ],
-      },
-    ],
-    [],
-  );
-
-  const [data, setData] = React.useState(makeData(20));
+const [page, setPage] = useState(4)
   return (
-    <Styles>
-      <Table columns={columns} data={data} setData={setData} />
-    </Styles>
+    <div>
+	 <div className="menu">
+		<span onClick={() => setPage(1)}>1</span>
+		<span onClick={() => setPage(2)}>2</span>
+		<span onClick={() => setPage(3)}>3</span>
+		<span onClick={() => setPage(4)}>4</span>
+	 </div>
+      {page === 1 && <Example1 />}
+	  {page === 2 && <Example2 />}
+	  {page === 3 && <Example3 />}
+	  {page === 4 && <Example4 />}
+    </div>
   );
 }
 

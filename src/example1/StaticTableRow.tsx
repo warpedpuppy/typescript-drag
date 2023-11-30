@@ -15,7 +15,7 @@ const StyledStaticTableRow = styled.tr`
     rgb(0 0 0 / 30%) 0px 10px 10px -5px;
   outline: #3e1eb3 solid 1px;
 `;
-// isDragging
+
 export const StaticTableRow = ({ row }: any) => {
   return (
     <StyledStaticTableRow {...row.getRowProps()}>
