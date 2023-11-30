@@ -1,6 +1,7 @@
 import React from "react";
 import { DragHandle } from "./DragHandle";
 import styled from "styled-components";
+
 const StyledStaticData = styled.td`
   background: white;
   &:first-of-type {
@@ -14,7 +15,7 @@ const StyledStaticTableRow = styled.tr`
     rgb(0 0 0 / 30%) 0px 10px 10px -5px;
   outline: #3e1eb3 solid 1px;
 `;
-
+// isDragging
 export const StaticTableRow = ({ row }: any) => {
   return (
     <StyledStaticTableRow {...row.getRowProps()}>
@@ -22,7 +23,7 @@ export const StaticTableRow = ({ row }: any) => {
         if (i === 0) {
           return (
             <StyledStaticData {...cell.getCellProps()}>
-              <DragHandle className="handle-wrapper active" />
+              <DragHandle className="handle-wrapper cursor-grabbing" />
               <span>{cell.render("Cell")}</span>
             </StyledStaticData>
           );

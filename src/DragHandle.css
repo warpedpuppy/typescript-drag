@@ -1,6 +1,7 @@
-.handle-wrapper.active {
-  cursor: grabbing;
-}
+
 .handle-wrapper:hover {
   cursor: grab;
+}
+.handle-wrapper.cursor-grabbing {
+	cursor: grabbing;
 }

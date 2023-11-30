@@ -12,6 +12,7 @@ const HandleWrapper = styled.div`
   }
  
 `;
+//  cursor: ${({ isDragging }) => (isDragging ? "grabbing" : "grab")};
 export const DragHandle = (props: any) => {
   return (
     <HandleWrapper className="handle-wrapper" {...props}>
