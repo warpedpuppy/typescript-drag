@@ -1,0 +1,19 @@
+.example6Table {
+	border: 1px solid black;
+	width: 100%;
+	position: relative;
+}
+.example6Table tr td {
+	border: 1px solid black;
+	width: 100%;
+	text-align: center;
+	cursor: grab;
+}
+.drag-item {
+	border: 1px solid black;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	cursor: grabbing;
+	background-color: blue;
+}
